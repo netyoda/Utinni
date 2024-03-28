@@ -103,29 +103,27 @@ namespace UtinniCoreDotNet.UI.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(452, 9);
+            this.label1.Location = new System.Drawing.Point(452, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Renagade Build";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "SRSWGEMU - BUILD";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1200, 500);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlPlugins);
             this.Controls.Add(this.pnlGame);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IconImage = ((System.Drawing.Image)(resources.GetObject("$this.IconImage")));
-            this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(750, 250);
             this.Name = "FormMain";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "Utinni - Renagade";
+            this.Text = "Utinni";
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.pnlPlugins.ResumeLayout(false);

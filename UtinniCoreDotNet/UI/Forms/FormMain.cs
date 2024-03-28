@@ -102,6 +102,7 @@ namespace UtinniCoreDotNet.UI.Forms
             pnlPlugins.ForeColor = Colors.Font();
 
             tbddWindows = new UtinniTitlebarDropDownButton("Open...");
+
             ToolStripDropDownItem tsddItem = new ToolStripMenuItem("Log");
             tsddItem.Click += (sender, args) =>
             {
@@ -380,5 +381,9 @@ namespace UtinniCoreDotNet.UI.Forms
             ToggleFullWindowGame();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

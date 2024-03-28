@@ -102,7 +102,7 @@ namespace UtinniCoreDotNet.UI.Forms
             pnlPlugins.ForeColor = Colors.Font();
 
             tbddWindows = new UtinniTitlebarDropDownButton("Open...");
-
+            tbddWindows.Location = new Point(300, 300);
             ToolStripDropDownItem tsddItem = new ToolStripMenuItem("Log");
             tsddItem.Click += (sender, args) =>
             {

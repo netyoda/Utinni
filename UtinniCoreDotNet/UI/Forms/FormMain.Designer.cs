@@ -57,6 +57,7 @@ namespace UtinniCoreDotNet.UI.Forms
             this.pnlGame = new System.Windows.Forms.Panel();
             this.cmbPanels = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
             this.pnlPlugins = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlPlugins.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,23 +100,37 @@ namespace UtinniCoreDotNet.UI.Forms
             this.pnlPlugins.Size = new System.Drawing.Size(446, 460);
             this.pnlPlugins.TabIndex = 7;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(452, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Renagade Build";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1200, 500);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlPlugins);
             this.Controls.Add(this.pnlGame);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IconImage = ((System.Drawing.Image)(resources.GetObject("$this.IconImage")));
+            this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(750, 250);
             this.Name = "FormMain";
-            this.Text = "Utinni";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Text = "Utinni - Renagade";
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.pnlPlugins.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -123,5 +138,6 @@ namespace UtinniCoreDotNet.UI.Forms
         private System.Windows.Forms.Panel pnlGame;
         private UtinniCoreDotNet.UI.Controls.UtinniComboBox cmbPanels;
         private System.Windows.Forms.Panel pnlPlugins;
+        private System.Windows.Forms.Label label1;
     }
 }

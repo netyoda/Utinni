@@ -2130,6 +2130,11 @@ namespace UtinniCore
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
                     EntryPoint="??0IoWin@utinni@@QAE@ABV01@@Z")]
                 internal static extern global::System.IntPtr cctor(global::System.IntPtr __instance, global::System.IntPtr _0);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?detour@IoWin@utinni@@SAXXZ")]
+                internal static extern void Detour();
             }
 
             public global::System.IntPtr __Instance { get; protected set; }
@@ -2198,6 +2203,11 @@ namespace UtinniCore
                 if (__ownsNativeInstance)
                     Marshal.FreeHGlobal(__Instance);
                 __Instance = IntPtr.Zero;
+            }
+
+            public static void Detour()
+            {
+                __Internal.Detour();
             }
 
             public uint Vtbl
@@ -3487,6 +3497,229 @@ namespace UtinniCore
 
     namespace DirectX
     {
+        public unsafe partial class DepthTexture : IDisposable
+        {
+            [StructLayout(LayoutKind.Explicit, Size = 24)]
+            public partial struct __Internal
+            {
+                [FieldOffset(0)]
+                internal global::System.IntPtr pTextureDepth;
+
+                [FieldOffset(4)]
+                internal global::System.IntPtr pTextureColor;
+
+                [FieldOffset(8)]
+                internal byte m_isRESZ;
+
+                [FieldOffset(9)]
+                internal byte m_isINTZ;
+
+                [FieldOffset(10)]
+                internal byte m_isNVAPI;
+
+                [FieldOffset(11)]
+                internal byte m_isSupported;
+
+                [FieldOffset(12)]
+                internal global::System.IntPtr pRegisteredDSS;
+
+                [FieldOffset(16)]
+                internal global::System.IntPtr _pDevice;
+
+                [FieldOffset(20)]
+                internal int stage;
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="??0DepthTexture@directX@@QAE@XZ")]
+                internal static extern global::System.IntPtr ctor(global::System.IntPtr __instance);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="??0DepthTexture@directX@@QAE@ABV01@@Z")]
+                internal static extern global::System.IntPtr cctor(global::System.IntPtr __instance, global::System.IntPtr _0);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="??1DepthTexture@directX@@QAE@XZ")]
+                internal static extern void dtor(global::System.IntPtr __instance, int delete);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="?release@DepthTexture@directX@@QAEXXZ")]
+                internal static extern void Release(global::System.IntPtr __instance);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="?resolveDepth@DepthTexture@directX@@QAEXXZ")]
+                internal static extern void ResolveDepth(global::System.IntPtr __instance);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?addDepthResolveCallback@DepthTexture@directX@@SAXP6AXXZ@Z")]
+                internal static extern void AddDepthResolveCallback(global::System.IntPtr func);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="?isINTZ@DepthTexture@directX@@QAE_NXZ")]
+                [return: MarshalAs(UnmanagedType.I1)]
+                internal static extern bool IsINTZ(global::System.IntPtr __instance);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="?isSupported@DepthTexture@directX@@QAE_NXZ")]
+                [return: MarshalAs(UnmanagedType.I1)]
+                internal static extern bool IsSupported(global::System.IntPtr __instance);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="?isNvidia@DepthTexture@directX@@QAE_NXZ")]
+                [return: MarshalAs(UnmanagedType.I1)]
+                internal static extern bool IsNvidia(global::System.IntPtr __instance);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="?getStage@DepthTexture@directX@@QAEHXZ")]
+                internal static extern int GetStage(global::System.IntPtr __instance);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.ThisCall,
+                    EntryPoint="?setStage@DepthTexture@directX@@QAEXH@Z")]
+                internal static extern void SetStage(global::System.IntPtr __instance, int value);
+            }
+
+            public global::System.IntPtr __Instance { get; protected set; }
+
+            internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::UtinniCore.DirectX.DepthTexture> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::UtinniCore.DirectX.DepthTexture>();
+
+            protected bool __ownsNativeInstance;
+
+            internal static global::UtinniCore.DirectX.DepthTexture __CreateInstance(global::System.IntPtr native, bool skipVTables = false)
+            {
+                return new global::UtinniCore.DirectX.DepthTexture(native.ToPointer(), skipVTables);
+            }
+
+            internal static global::UtinniCore.DirectX.DepthTexture __CreateInstance(global::UtinniCore.DirectX.DepthTexture.__Internal native, bool skipVTables = false)
+            {
+                return new global::UtinniCore.DirectX.DepthTexture(native, skipVTables);
+            }
+
+            private static void* __CopyValue(global::UtinniCore.DirectX.DepthTexture.__Internal native)
+            {
+                var ret = Marshal.AllocHGlobal(sizeof(global::UtinniCore.DirectX.DepthTexture.__Internal));
+                *(global::UtinniCore.DirectX.DepthTexture.__Internal*) ret = native;
+                return ret.ToPointer();
+            }
+
+            private DepthTexture(global::UtinniCore.DirectX.DepthTexture.__Internal native, bool skipVTables = false)
+                : this(__CopyValue(native), skipVTables)
+            {
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+            }
+
+            protected DepthTexture(void* native, bool skipVTables = false)
+            {
+                if (native == null)
+                    return;
+                __Instance = new global::System.IntPtr(native);
+            }
+
+            public DepthTexture()
+            {
+                __Instance = Marshal.AllocHGlobal(sizeof(global::UtinniCore.DirectX.DepthTexture.__Internal));
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+                __Internal.ctor(__Instance);
+            }
+
+            public DepthTexture(global::UtinniCore.DirectX.DepthTexture _0)
+            {
+                __Instance = Marshal.AllocHGlobal(sizeof(global::UtinniCore.DirectX.DepthTexture.__Internal));
+                __ownsNativeInstance = true;
+                NativeToManagedMap[__Instance] = this;
+                *((global::UtinniCore.DirectX.DepthTexture.__Internal*) __Instance) = *((global::UtinniCore.DirectX.DepthTexture.__Internal*) _0.__Instance);
+            }
+
+            public void Dispose()
+            {
+                Dispose(disposing: true);
+            }
+
+            public virtual void Dispose(bool disposing)
+            {
+                if (__Instance == IntPtr.Zero)
+                    return;
+                global::UtinniCore.DirectX.DepthTexture __dummy;
+                NativeToManagedMap.TryRemove(__Instance, out __dummy);
+                if (disposing)
+                    __Internal.dtor(__Instance, 0);
+                if (__ownsNativeInstance)
+                    Marshal.FreeHGlobal(__Instance);
+                __Instance = IntPtr.Zero;
+            }
+
+            public void Release()
+            {
+                __Internal.Release(__Instance);
+            }
+
+            public void ResolveDepth()
+            {
+                __Internal.ResolveDepth(__Instance);
+            }
+
+            public static void AddDepthResolveCallback(global::UtinniCore.Delegates.Action_ func)
+            {
+                var __arg0 = func == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(func);
+                __Internal.AddDepthResolveCallback(__arg0);
+            }
+
+            public bool IsINTZ
+            {
+                get
+                {
+                    var __ret = __Internal.IsINTZ(__Instance);
+                    return __ret;
+                }
+            }
+
+            public bool IsSupported
+            {
+                get
+                {
+                    var __ret = __Internal.IsSupported(__Instance);
+                    return __ret;
+                }
+            }
+
+            public bool IsNvidia
+            {
+                get
+                {
+                    var __ret = __Internal.IsNvidia(__Instance);
+                    return __ret;
+                }
+            }
+
+            public int Stage
+            {
+                get
+                {
+                    var __ret = __Internal.GetStage(__Instance);
+                    return __ret;
+                }
+
+                set
+                {
+                    __Internal.SetStage(__Instance, value);
+                }
+            }
+        }
+    }
+
+    namespace DirectX
+    {
         public unsafe partial class directx9
         {
             public partial struct __Internal
@@ -3495,6 +3728,16 @@ namespace UtinniCore
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
                     EntryPoint="?detour@directX@@YAXXZ")]
                 internal static extern void Detour();
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?cleanup@directX@@YAXXZ")]
+                internal static extern void Cleanup();
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?getDepthTexture@directX@@YAPAVDepthTexture@1@XZ")]
+                internal static extern global::System.IntPtr GetDepthTexture();
 
                 [SuppressUnmanagedCodeSecurity]
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
@@ -3516,6 +3759,22 @@ namespace UtinniCore
             public static void Detour()
             {
                 __Internal.Detour();
+            }
+
+            public static void Cleanup()
+            {
+                __Internal.Cleanup();
+            }
+
+            public static global::UtinniCore.DirectX.DepthTexture GetDepthTexture()
+            {
+                var __ret = __Internal.GetDepthTexture();
+                global::UtinniCore.DirectX.DepthTexture __result0;
+                if (__ret == IntPtr.Zero) __result0 = null;
+                else if (global::UtinniCore.DirectX.DepthTexture.NativeToManagedMap.ContainsKey(__ret))
+                    __result0 = (global::UtinniCore.DirectX.DepthTexture) global::UtinniCore.DirectX.DepthTexture.NativeToManagedMap[__ret];
+                else __result0 = global::UtinniCore.DirectX.DepthTexture.__CreateInstance(__ret);
+                return __result0;
             }
 
             public static void ToggleWireframe()
@@ -6062,11 +6321,6 @@ namespace UtinniCore
 
                 [SuppressUnmanagedCodeSecurity]
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
-                    EntryPoint="?detour@Graphics@utinni@@SAXXZ")]
-                internal static extern void Detour();
-
-                [SuppressUnmanagedCodeSecurity]
-                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
                     EntryPoint="?useHardwareCursor@Graphics@utinni@@SAX_N@Z")]
                 internal static extern void UseHardwareCursor(bool value);
 
@@ -6104,6 +6358,11 @@ namespace UtinniCore
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
                     EntryPoint="?drawExtent@Graphics@utinni@@SAXPAVExtent@2@I@Z")]
                 internal static extern void DrawExtent(global::System.IntPtr extent, uint vecArgbColor);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?detour@Graphics@utinni@@SAXXZ")]
+                internal static extern void Detour();
 
                 [SuppressUnmanagedCodeSecurity]
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
@@ -6232,11 +6491,6 @@ namespace UtinniCore
                 __Internal.AddPostPresentCallback(__arg0);
             }
 
-            public static void Detour()
-            {
-                __Internal.Detour();
-            }
-
             public static void UseHardwareCursor(bool value)
             {
                 __Internal.UseHardwareCursor(value);
@@ -6278,6 +6532,11 @@ namespace UtinniCore
             {
                 var __arg0 = ReferenceEquals(extent, null) ? global::System.IntPtr.Zero : extent.__Instance;
                 __Internal.DrawExtent(__arg0, vecArgbColor);
+            }
+
+            public static void Detour()
+            {
+                __Internal.Detour();
             }
 
             public static int CurrentRenderTargetWidth
@@ -10285,6 +10544,12 @@ namespace UtinniCore
 
                 [SuppressUnmanagedCodeSecurity]
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?isServerId@Network@utinni@@SA_N_J@Z")]
+                [return: MarshalAs(UnmanagedType.I1)]
+                internal static extern bool IsServerId(long id);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
                     EntryPoint="?getManger@Network@utinni@@SAIXZ")]
                 internal static extern uint GetManger();
             }
@@ -10383,6 +10648,12 @@ namespace UtinniCore
             public static long Cast(int id)
             {
                 var __ret = __Internal.Cast(id);
+                return __ret;
+            }
+
+            public static bool IsServerId(long id)
+            {
+                var __ret = __Internal.IsServerId(id);
                 return __ret;
             }
 
@@ -13952,12 +14223,22 @@ namespace UtinniCore
                     [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
                         EntryPoint="?addObjectNotifications@renderWorld@utinni@@YAXPAVObject@2@@Z")]
                     internal static extern void AddObjectNotifications(global::System.IntPtr obj);
+
+                    [SuppressUnmanagedCodeSecurity]
+                    [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                        EntryPoint="?detour@renderWorld@utinni@@YAXXZ")]
+                    internal static extern void Detour();
                 }
 
                 public static void AddObjectNotifications(global::UtinniCore.Utinni.Object obj)
                 {
                     var __arg0 = ReferenceEquals(obj, null) ? global::System.IntPtr.Zero : obj.__Instance;
                     __Internal.AddObjectNotifications(__arg0);
+                }
+
+                public static void Detour()
+                {
+                    __Internal.Detour();
                 }
             }
         }
@@ -15574,8 +15855,18 @@ namespace UtinniCore
 
                 [SuppressUnmanagedCodeSecurity]
                 [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?addReceiveMessageCallback@SystemMessageManager@utinni@@SAXP6AXPBD@Z@Z")]
+                internal static extern void AddReceiveMessageCallback(global::System.IntPtr func);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
                     EntryPoint="?sendMessage@SystemMessageManager@utinni@@SAXPBD_N@Z")]
                 internal static extern void SendMessage([MarshalAs(UnmanagedType.LPUTF8Str)] string message, bool chatOnly);
+
+                [SuppressUnmanagedCodeSecurity]
+                [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                    EntryPoint="?detour@SystemMessageManager@utinni@@SAXXZ")]
+                internal static extern void Detour();
             }
 
             public global::System.IntPtr __Instance { get; protected set; }
@@ -15646,9 +15937,20 @@ namespace UtinniCore
                 __Instance = IntPtr.Zero;
             }
 
+            public static void AddReceiveMessageCallback(global::UtinniCore.Delegates.Action_string func)
+            {
+                var __arg0 = func == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(func);
+                __Internal.AddReceiveMessageCallback(__arg0);
+            }
+
             public static void SendMessage(string message, bool chatOnly)
             {
                 __Internal.SendMessage(message, chatOnly);
+            }
+
+            public static void Detour()
+            {
+                __Internal.Detour();
             }
         }
     }
@@ -15680,6 +15982,25 @@ namespace UtinniCore
                 public static void Patch()
                 {
                     __Internal.Patch();
+                }
+            }
+        }
+
+        namespace CuiLoginScreen
+        {
+            public unsafe partial class cui_misc
+            {
+                public partial struct __Internal
+                {
+                    [SuppressUnmanagedCodeSecurity]
+                    [DllImport("UtinniCore", CallingConvention = global::System.Runtime.InteropServices.CallingConvention.Cdecl,
+                        EntryPoint="?detour@cuiLoginScreen@utinni@@YAXXZ")]
+                    internal static extern void Detour();
+                }
+
+                public static void Detour()
+                {
+                    __Internal.Detour();
                 }
             }
         }
